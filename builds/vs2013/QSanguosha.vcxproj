@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
       <Configuration>Debug</Configuration>
@@ -22,6 +22,7 @@
     <ProjectGuid>{ED0EA6EF-703C-3334-B884-72B72FA2B610}</ProjectGuid>
     <RootNamespace>QSanguosha</RootNamespace>
     <Keyword>Qt4VSv1.0</Keyword>
+    <WindowsTargetPlatformVersion>10.0.15063.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -31,7 +32,7 @@
     <ConfigurationType>Application</ConfigurationType>
     <IntermediateDirectory>debug\</IntermediateDirectory>
     <PrimaryOutput>QSanguosha</PrimaryOutput>
-    <PlatformToolset>v120</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
     <WholeProgramOptimization>false</WholeProgramOptimization>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
@@ -41,7 +42,7 @@
     <ConfigurationType>Application</ConfigurationType>
     <IntermediateDirectory>debug\</IntermediateDirectory>
     <PrimaryOutput>QSanguosha</PrimaryOutput>
-    <PlatformToolset>v120</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
     <WholeProgramOptimization>false</WholeProgramOptimization>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
@@ -52,7 +53,7 @@
     <IntermediateDirectory>release\</IntermediateDirectory>
     <PrimaryOutput>QSanguosha</PrimaryOutput>
     <WholeProgramOptimization>true</WholeProgramOptimization>
-    <PlatformToolset>v120</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
     <WindowsAppContainer>false</WindowsAppContainer>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
@@ -63,7 +64,7 @@
     <IntermediateDirectory>release\</IntermediateDirectory>
     <PrimaryOutput>QSanguosha</PrimaryOutput>
     <WholeProgramOptimization>true</WholeProgramOptimization>
-    <PlatformToolset>v120</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
     <WindowsAppContainer>false</WindowsAppContainer>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
@@ -102,7 +103,9 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <OutDir>..\..\Bin\</OutDir>
     <IntDir>$(Platform)\Debug\</IntDir>
-    <IncludePath>..\..\;$(VC_IncludePath);$(WindowsSDK_IncludePath);</IncludePath>
+    <IncludePath>C:\Qt\5.9.2\msvc2017_64\include;..\..\;$(VC_IncludePath);$(WindowsSDK_IncludePath)</IncludePath>
+    <ExecutablePath>C:\Qt\5.9.2\msvc2017_64\bin;$(ExecutablePath)</ExecutablePath>
+    <LibraryPath>C:\Qt\5.9.2\msvc2017_64\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>..\..\Bin\</OutDir>
@@ -192,7 +195,7 @@
       <Optimization>Disabled</Optimization>
       <DisableSpecificWarnings>4005;4267</DisableSpecificWarnings>
       <TreatWarningAsError>false</TreatWarningAsError>
-      <SmallerTypeCheck>true</SmallerTypeCheck>
+      <SmallerTypeCheck>false</SmallerTypeCheck>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <PrecompiledHeader>Use</PrecompiledHeader>
@@ -200,7 +203,7 @@
       <ForcedIncludeFiles>src/pch.h</ForcedIncludeFiles>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>qtmaind.lib;..\..\lib\win\x64\fmodexL.lib;..\..\lib\win\x64\freetypeD.lib;..\..\lib\breakpad.lib;Qt5Guid.lib;Qt5Networkd.lib;Qt5Cored.lib;Qt5Widgetsd.lib;ole32.lib;oleaut32.lib;user32.lib;gdi32.lib;advapi32.lib;Qt5Declaratived.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>legacy_stdio_definitions.lib;qtmaind.lib;..\..\lib\win\x64\fmodexL.lib;..\..\lib\win\x64\freetypeD.lib;..\..\lib\breakpad.lib;Qt5Guid.lib;Qt5Networkd.lib;Qt5Cored.lib;Qt5Widgetsd.lib;ole32.lib;oleaut32.lib;user32.lib;gdi32.lib;advapi32.lib;Qt5Qml.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(QTDIR)\lib;.;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>"/MANIFESTDEPENDENCY:type='win32' name='Microsoft.Windows.Common-Controls' version='6.0.0.0' publicKeyToken='6595b64144ccf1df' language='*' processorArchitecture='*'" %(AdditionalOptions)</AdditionalOptions>
       <DataExecutionPrevention>true</DataExecutionPrevention>
@@ -224,7 +227,7 @@
       <Command>$(ProjectDir)\..\..\tools\swig\swig.exe -c++ -lua "$(ProjectDir)\..\..\swig\sanguosha.i"</Command>
     </PreBuildEvent>
     <PostBuildEvent>
-      <Command>copy $(ProjectDir)sanguosha.qm $(ProjectDir)..\..\</Command>
+      <Command>copy $(ProjectDir)..\sanguosha.qm $(ProjectDir)..\..\sanguosha.qm</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -322,7 +325,7 @@
       <ForcedIncludeFiles>src/pch.h</ForcedIncludeFiles>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>qtmain.lib;..\..\lib\win\x64\fmodex.lib;..\..\lib\win\x64\freetype.lib;..\..\lib\breakpad.lib;Qt5Gui.lib;Qt5Network.lib;Qt5Core.lib;Qt5Widgets.lib;ole32.lib;oleaut32.lib;user32.lib;gdi32.lib;advapi32.lib;Qt5Declarative.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>legacy_stdio_definitions.lib;qtmain.lib;..\..\lib\win\x64\fmodex.lib;..\..\lib\win\x64\freetype.lib;..\..\lib\breakpad.lib;Qt5Gui.lib;Qt5Network.lib;Qt5Core.lib;Qt5Widgets.lib;ole32.lib;oleaut32.lib;user32.lib;gdi32.lib;advapi32.lib;Qt5Qml.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>$(QTDIR)\lib;.;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalOptions>"/MANIFESTDEPENDENCY:type='win32' name='Microsoft.Windows.Common-Controls' version='6.0.0.0' publicKeyToken='6595b64144ccf1df' language='*' processorArchitecture='*'" %(AdditionalOptions)</AdditionalOptions>
       <DataExecutionPrevention>true</DataExecutionPrevention>
